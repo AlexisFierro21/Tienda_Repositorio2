@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 class Librooo extends Model
 {
 	protected $table = "librooos";
-	protected $fillable =['id','titulo','autor','img','genero','precio','reseña'];
+	protected $fillable =['titulo','autor','image','genero','precio','reseña'];
    public function editoriaals()
     {
     	return $this->belongsToMany('App\Editoriaal');

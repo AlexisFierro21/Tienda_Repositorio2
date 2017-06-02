@@ -42,9 +42,9 @@
 </div>
 <br>
 <div class="btn-group btn-group-justified " role="group" ariable="Justified button group">
-<a href="{{route('home')}}" class="btn btn-primary rad"><i class="fa fa-chevron-circle-left fa-2x"> Seguir comprando</i></a>
+<a href="{{route('inicio')}}" class="btn btn-primary rad"><i class="fa fa-chevron-circle-left fa-2x"> Seguir comprando</i></a>
 	<a href="{{route('cart-trash')}}" class="btn btn-danger"><i class="fa fa-trash fa-2x">Vaciar carrito</i></a>	
-	<a href="" class="btn btn-success"><i class="fa fa-chevron-circle-right fa-2x">Comprar</i></a>
+	<a href="{{route('payment')}}" class="btn btn-success"><i class="fa fa-chevron-circle-right fa-2x">Comprar</i></a>
 </div>
 
 

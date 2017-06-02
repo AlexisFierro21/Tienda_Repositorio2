@@ -13,12 +13,13 @@ class CreateEditoriaalLibroooTable extends Migration
      */
     public function up()
     {
-        Schema::create('editoriaal_librooo', function (Blueprint $table) {
+        Schema::create('editoriaal_librooos', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('editoriaal_id')->unsigned();
             $table->foreign('editoriaal_id')->references('id')->on('editoriaals')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('librooo_id')->unsigned();
             $table->foreign('librooo_id')->references('id')->on('librooos')->onDelete('cascade')->onUpdate('cascade');
+            $table->timestamps();
     });
     }
 
@@ -29,6 +30,6 @@ class CreateEditoriaalLibroooTable extends Migration
      */
     public function down()
     {
-         Schema::drop('editoriaal_librooo');
+         Schema::drop('editoriaal_librooos');
     }
 }

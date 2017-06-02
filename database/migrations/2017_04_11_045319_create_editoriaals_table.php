@@ -15,11 +15,15 @@ class CreateEditoriaalsTable extends Migration
     {
         Schema::create('editoriaals', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('Users')->onDelete('cascade')->onUpdate('cascade');/*            
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');*/
             $table->string('nombre',255);
             $table->string('rfc',255);
-            $table->string('code',5);
-            $table->string('pass',8);
-            //$table->timestamps();
+            //$table->string('code',5);
+            //$table->string('pass',8);
+                $table->timestamps();
         });
     }
 

@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Editoriaal;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
+use Illuminate\Http\Request;
 class RegisterController extends Controller
 {
     /*
@@ -27,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = 'incio';
 
     /**
      * Create a new controller instance.
@@ -51,6 +52,9 @@ class RegisterController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
+            'code' => 'string|required',
+            'ap_paterno'=>'string|required',
+            'ap_materno'=>'string|required'
         ]);
     }
 
@@ -60,15 +64,41 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return User
      */
-        public function showRegistrationForm(){
-return view('auth.register');
+    public function showRegistrationForm(){
+            return view('auth.register');
     }
-    protected function create(array $data)
+
+    protected function register(Request $data)
     {
-        return User::create([
-            'name' => $data['name'],
+        if ($data['isEditorial']){
+            
+             User::create([
+            'email'=>$data['code'],
+            'password'=>bcrypt($data['password']),
+            ]);
+             $id= \DB::table('Users')->where('email',$data['code'])
+        ->select('Users.id')
+         ->get();
+            return Editoriaal::create([
+                'nombre'=>$data['name'],
+                'rfc'=>$data['rfc'],
+                'users_id'=>$id[0]->id,
+                ]);
+        }else{
+         User::create([
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-        ]);
+            ]);
+        $id=\DB::table('Users')->where('email',$data['email'])
+        ->select('Users.id')
+         ->get();
+
+return usuario::create([
+    'nombre'=>$data['nombre'],
+    'user_id='=>$id[0]->id,
+'ap_paterno'=>$data['ap_paterno'],
+'ap_materno'=>$data['ap_materno'],
+    ]);
+        }
     }
 }

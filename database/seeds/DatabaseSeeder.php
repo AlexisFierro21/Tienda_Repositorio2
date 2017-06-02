@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-
+use App\User;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -12,8 +12,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        factory(User::class)->crate([
+            'email' => 'alexis@mail.com'
+        ]);
     	model::unguard();
-         $this->call(libroTableSedeer::class);
+        $this->call(libroTableSedeer::class);
 		model::reguard();    
     }
 }

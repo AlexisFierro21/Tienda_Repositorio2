@@ -18,21 +18,10 @@
         <button type="submit" class="btn btn-default">Buscar</button>
       </form>
       <ul class="nav navbar-nav navbar-default">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-user fa-2x"></i><span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="{{route('login-get')}}">Iniciar Sesion</a></li>
-            <!--<li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li class="divider"></li>
-            <li><a href="#">One more separated link</a></li>-->
-          </ul>
-        </li>
+      @include('store.partials.menu-user')
+
        <li><a href="{{route('cart-show')}}"><i class="fa fa-shopping-cart fa-2x"></i><span class="badge">{{$cantidad}}</span></a></li>
-        <li><a href="#" class="tex-navbar">¿Eres empresa?</a></li>
-       <li><a href="#" class="btn btn-default tex-navbar">Bajar Programa</a></li>
+       <li><a href="#" class="btn btn-default tex-navbar"></a></li>
       </ul>
     </div>
   </div>

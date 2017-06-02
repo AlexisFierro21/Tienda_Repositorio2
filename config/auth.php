@@ -45,6 +45,10 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
+        'editorial'=>[
+'driver'=>'session',
+'provider'=>'editorial',
+        ],
     ],
 
     /*
@@ -68,9 +72,13 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
-            'table'=>'Users',
+            'table'=>'useers',
         ],
-
+            'editorial' =>[
+            'driver' => 'eloquent',
+            'model' => App\Editoriaal::class,
+            'table' =>'editoriaals',
+],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',

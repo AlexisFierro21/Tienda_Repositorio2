@@ -7,7 +7,7 @@
 		<div class="row">
 			<div class="col-md-6">
 				<div class="libro-bloc">
-					<img class="showww" src="{{$resultado->image}}">	
+					<img class="showww" src="../{{$resultado->image}} " width="150">	
 				</div>
 			</div>
 			<div class="col-md-6">	
@@ -19,7 +19,7 @@
 						<span class="label label-success">Precio : ${{number_format($resultado->precio,2)}}</span>
 							</h3>
 						<p>
-							<h3><a class="btn btn-default btn-lg btn-block" href="{{route('cart-add',$resultado->id_libro)}}"><i class="fa fa-cart-plus"> La quiero</i></a></h3>
+							<h3><a class="btn btn-default btn-lg btn-block" href="{{route('cart-add',$resultado->id)}}"><i class="fa fa-cart-plus"> La quiero</i></a></h3>
 						</p>
 					</div>
 				</div>

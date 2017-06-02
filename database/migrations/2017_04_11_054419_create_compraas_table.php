@@ -23,7 +23,7 @@ class CreateCompraasTable extends Migration
             $table->integer('editorial_id')->unsigned();
             $table->foreign('editorial_id')->references('id')->on('editoriaals')->onDelete('cascade');
             $table->integer('usuario_id')->unsigned();
-            $table->foreign('usuario_id')->references('id')->on('Users')->onDelete('cascade');
+            $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('cascade');
             $table->timestamps();
         });
 

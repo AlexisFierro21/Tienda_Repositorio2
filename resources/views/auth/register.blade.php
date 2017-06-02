@@ -10,22 +10,23 @@
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('register-post') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                        <input type="hidden" name="esUsuario" id="esUsuario" value="true">
+                        <div class="form-group{{ $errors->has('nombre') ? ' has-error' : '' }}">
+                            <label for="nombre" class="col-md-4 control-label">nombre</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="nombre" type="text" class="form-control" name="nombre" value="{{ old('nombre') }}" required autofocus>
 
-                                @if ($errors->has('name'))
+                                @if ($errors->has('nombre'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $errors->first('nombre') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                            <label for="email" class="col-md-4 control-label">E-Mail</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
@@ -57,6 +58,32 @@
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                            </div>
+                        </div>
+                        <div class="form-group{{ $errors->has('ap_paterno') ? ' has-error' : '' }}">
+                            <label for="ap_paterno" class="col-md-4 control-label">ap paterno</label>
+
+                            <div class="col-md-6">
+                                <input id="ap_paterno" type="text" class="form-control" name="ap_paterno" required>
+
+                                @if ($errors->has('ap_paterno'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('ap_paterno') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group{{ $errors->has('ap_materno') ? ' has-error' : '' }}">
+                            <label for="ap_materno" class="col-md-4 control-label">ap materno</label>
+
+                            <div class="col-md-6">
+                                <input id="ap_materno" type="text" class="form-control" name="ap_materno" required>
+
+                                @if ($errors->has('ap_materno'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('ap_materno') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 

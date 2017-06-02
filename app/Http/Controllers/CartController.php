@@ -37,7 +37,7 @@ public function add(Librooo $libro)
 	->select('librooos.*')
 	->where('librooos.id',$libro->id)
 	->get();*/
-	$res=\DB::table('editoriaal_librooo')
+	$res=\DB::table('editoriaal_librooos')
 	->join('librooos','librooo_id','=','librooos.id')
 	->join('Editoriaals','editoriaal_id','=','editoriaals.id')
 	->select('librooos.*','editoriaals.nombre')
@@ -50,7 +50,7 @@ public function add(Librooo $libro)
 		# code...
 	
 	//dd($carr);
-	return redirect()->route('home');
+	return redirect()->route('inicio');
 }
 
     //delete item

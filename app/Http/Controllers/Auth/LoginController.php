@@ -31,7 +31,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = 'home';
+    protected $redirectTo = 'inicio';
 protected $redirectPath = 'inicio';
     /**
      * Create a new controller instance.
@@ -48,12 +48,21 @@ protected $redirectPath = 'inicio';
     {
         return view('auth.login');
     }
-    public function login(Request $request)
+
+  /*  public function logout(Request $request)
     {
-        if(\Auth::user())
-        {
-            return Redirect::to('inicio');
-        }
+        $this->guard()->logout();
+
+        $request->session()->flush();
+
+        $request->session()->regenerate();
+
+        return redirect()->route('inicio');
+    }
+*/
+  /*  public function login(Request $request)
+    {
+        
            
                $this->validate($request, [
             'email' => 'required|string',
@@ -74,12 +83,12 @@ $userdata = array(
         
             //return view('home');
         }
-        return view('home')->with('mesaje');
+        return view('auth.login')->with('mesaje');
 
         // If the login attempt was unsuccessful we will increment the number of attempts
         // to login and redirect the user back to the login form. Of course, when this
         // user surpasses their maximum number of attempts they will get locked out.
-    }/*
+    }*//*
         public function logout(Request $request)
     {
         $this->guard()->logout();
@@ -90,5 +99,23 @@ $userdata = array(
 
         return redirect('home');
     }*/
+
+    /**
+     * The user has been authenticated.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+    */
+    protected function authenticated(Request $request, $user)
+    {
+        if ($request['editorial']) {
+return Redirect()->route('inicio-edi');
+        }
+        else{
+            return Redirect()->route('inicio');
+        }
+    }
+     
 
 }

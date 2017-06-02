@@ -21,7 +21,7 @@ class CreateLibrooosTable extends Migration
             $table->string('genero',255);
             $table->decimal('precio',5,2);
             $table->text('reseña');
-            //$table->timestamps();
+            $table->timestamps();
         });
     }
 

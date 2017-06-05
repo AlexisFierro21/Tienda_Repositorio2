@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Editoriaal;
+use App\usuario;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -69,8 +70,8 @@ class RegisterController extends Controller
     }
 
     protected function register(Request $data)
-    {
-        if ($data['isEditorial']){
+    { $id=null;
+        if ($data['esEditorial']){
             
              User::create([
             'email'=>$data['code'],
@@ -95,7 +96,7 @@ class RegisterController extends Controller
 
 return usuario::create([
     'nombre'=>$data['nombre'],
-    'user_id='=>$id[0]->id,
+    'user_id'=>$id[0]->id,
 'ap_paterno'=>$data['ap_paterno'],
 'ap_materno'=>$data['ap_materno'],
     ]);

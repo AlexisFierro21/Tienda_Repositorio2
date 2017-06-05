@@ -15,11 +15,14 @@ class empresaController extends Controller
 {
    	public function index() {
     $id=Auth::user()->id;
+    $iddd= \DB::table('editoriaals')->where('user_id',$id)
+		->select('editoriaals.id')
+         ->get();
 	$res=\DB::table('editoriaal_librooos')
 	->join('librooos','librooo_id','=','librooos.id')
 	->join('Editoriaals','editoriaal_id','=','editoriaals.id')
 	->select('librooos.*')
-	->where('editoriaals.id',$id)
+	->where('editoriaals.user_id',$id)
 	->get();
 //return dd($res);
 	//where('fk_libro',$libro->id_libro)->first();
@@ -33,7 +36,7 @@ class empresaController extends Controller
     return view('store.editorial.tabla',compact('res'));
     }
     public function delete($id){
-    $libro = librooo::destroy($id);
+ \DB::table('Librooos')->where('id',$id)->delete();
     //$libro->destroy();
     return redirect()->route('inicio-edi');
 /*	$cart =\Session::get('cart');
@@ -78,9 +81,12 @@ $urll="img/".$fileNamee;
          $idd = \DB::table('librooos')->where('image',$url)
 		->select('librooos.id')
          ->get();
-//return dd($idd[0]->id);
+//return $dd($idd[0]->id);
+    $iddd= \DB::table('editoriaals')->where('user_id',$user)
+        ->select('editoriaals.id')
+         ->get();
          editoriaal_librooo::create([
-         	'editoriaal_id'=>$user,
+         	'editoriaal_id'=>$iddd[0]->id,
          	'librooo_id'=>$idd[0]->id,
          	]);
          return redirect()->route('inicio-edi');

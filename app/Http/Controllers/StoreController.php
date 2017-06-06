@@ -8,6 +8,7 @@ class StoreController extends Controller
 {//Se ejecutara en el incio de la pagina para mostrar todos los libros disponibles
 	public function index(){
     $libros= Librooo::all();
+    $cart=null;
     $cart=\Session::get('cart');
     $cantidad=0;
     foreach ($cart as $item) {

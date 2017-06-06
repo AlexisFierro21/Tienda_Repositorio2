@@ -14,9 +14,9 @@ class CreateEditoriaalsTable extends Migration
     public function up()
     {
         Schema::create('editoriaals', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id');/* 
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('Users')->onDelete('cascade')->onUpdate('cascade');/*            
+            $table->foreign('user_id')->references('id')->on('Users')->onDelete('cascade')->onUpdate('cascade');           
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');*/
             $table->string('nombre',255);
